@@ -11,6 +11,15 @@
     <nav>
         <a href="{% url 'index' %}">홈</a>
         <a href="{% url 'about' %}">소개</a>
+        <span class="nav-right">
+            {% if user.is_authenticated %}
+                {{ user.username }}님
+                <a href="{% url 'logout' %}">로그아웃</a>
+            {% else %}
+                <a href="{% url 'login' %}">로그인</a>
+                <a href="{% url 'signup' %}">회원가입</a>
+            {% endif %}
+        </span>
     </nav>
 
     <main>

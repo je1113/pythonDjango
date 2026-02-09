@@ -4,7 +4,9 @@
 
 {% block content %}
 <h1>블로그 글 목록</h1>
+{% if user.is_authenticated %}
 <p><a href="{% url 'create' %}">새 글 작성</a></p>
+{% endif %}
 
 {% if posts %}
     {% for post in posts %}

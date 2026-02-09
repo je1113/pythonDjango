@@ -11,6 +11,8 @@
     </div>
 </article>
 <a href="{% url 'index' %}">목록으로</a>
+{% if user == post.author %}
 <a href="{% url 'update' post.id %}">수정</a>
 <a href="{% url 'delete' post.id %}">삭제</a>
+{% endif %}
 {% endblock %}

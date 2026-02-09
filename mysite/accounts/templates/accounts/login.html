@@ -1,0 +1,36 @@
+{% extends "blog/base.html" %}
+
+{% block title %}로그인{% endblock %}
+
+{% block content %}
+<h1>로그인</h1>
+
+<form method="post">
+    {% csrf_token %}
+
+    {% for field in form %}
+    <div class="form-group">
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field }}
+        {% if field.errors %}
+        <ul class="errors">
+            {% for error in field.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    {% endfor %}
+
+    {% if form.non_field_errors %}
+    <ul class="errors">
+        {% for error in form.non_field_errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <button type="submit">로그인</button>
+    <a href="{% url 'signup' %}">계정이 없으신가요?</a>
+</form>
+{% endblock %}

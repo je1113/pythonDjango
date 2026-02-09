@@ -17,6 +17,19 @@ nav {
     padding: 15px 0;
     border-bottom: 2px solid #333;
     margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-right {
+    margin-left: auto;
+    font-size: 0.9em;
+}
+
+.help {
+    color: #888;
+    font-size: 0.85em;
+    margin-top: 3px;
 }
 
 nav a {
