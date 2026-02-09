@@ -1,0 +1,19 @@
+{% extends "blog/base.html" %}
+
+{% block title %}블로그 홈{% endblock %}
+
+{% block content %}
+<h1>블로그 글 목록</h1>
+
+{% if posts %}
+    {% for post in posts %}
+    <article>
+        <h2><a href="{% url 'detail' post.id %}">{{ post.title }}</a></h2>
+        <p class="meta">{{ post.author }} | {{ post.created_at|date:"Y년 m월 d일" }}</p>
+        <p>{{ post.content|truncatechars:100 }}</p>
+    </article>
+    {% endfor %}
+{% else %}
+    <p>아직 작성된 글이 없습니다.</p>
+{% endif %}
+{% endblock %}

@@ -1,9 +1,16 @@
-from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404
+from .models import Post
 
 
 def index(request):
-    return HttpResponse("<h1>블로그 홈페이지</h1><p>첫 번째 Django View입니다!</p>")
+    posts = Post.objects.all()
+    return render(request, 'blog/index.html', {'posts': posts})
+
+
+def detail(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    return render(request, 'blog/detail.html', {'post': post})
 
 
 def about(request):
-    return HttpResponse("<h1>소개 페이지</h1><p>Django 학습 중입니다.</p>")
+    return render(request, 'blog/about.html')
