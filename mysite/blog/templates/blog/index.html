@@ -4,6 +4,7 @@
 
 {% block content %}
 <h1>블로그 글 목록</h1>
+<p><a href="{% url 'create' %}">새 글 작성</a></p>
 
 {% if posts %}
     {% for post in posts %}
